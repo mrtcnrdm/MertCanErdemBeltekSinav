@@ -13,6 +13,5 @@ namespace MertCanErdemBeltekSinav.Models
         public string Password { get; set; }
 
         public virtual Genders Gender { get; set; }
-        public virtual ICollection<Products> Products { get; set; }
     }
 }
