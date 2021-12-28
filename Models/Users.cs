@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MertCanErdemBeltekSinav.Models
 {
+    [Table("Users")]
     public class Users
     {
         public int Id { get; set; }
