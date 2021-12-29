@@ -1,62 +1,69 @@
 ﻿@model MertCanErdemBeltekSinav.Models.Products
 
-@{
-    ViewData["Title"] = "Create";
-}
+<h1>Ürün ekle</h1>
 
-<h1>Create</h1>
-
-<h4>Products</h4>
 <hr />
+
+<link href="~/js/dropify/css/dropify.min.css" rel="stylesheet">
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="CategoryId" class="control-label"></label>
-                <select asp-for="CategoryId" class ="form-control" asp-items="ViewBag.CategoryId"></select>
+                <label asp-for="CategoryId" class="control-label">Kategori seçin</label>
+                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="ProductTitle" class="control-label"></label>
+                <label asp-for="ProductTitle" class="control-label">Ürün Başlığı</label>
                 <input asp-for="ProductTitle" class="form-control" />
                 <span asp-validation-for="ProductTitle" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ProductName" class="control-label"></label>
+                <label asp-for="ProductName" class="control-label">Ürün Adı</label>
                 <input asp-for="ProductName" class="form-control" />
                 <span asp-validation-for="ProductName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ProductDescription" class="control-label"></label>
+                <label asp-for="ProductDescription" class="control-label">Ürün açıklaması</label>
                 <input asp-for="ProductDescription" class="form-control" />
                 <span asp-validation-for="ProductDescription" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ProductImage" class="control-label"></label>
-                <input asp-for="ProductImage" class="form-control" />
-                <span asp-validation-for="ProductImage" class="text-danger"></span>
+                <label asp-for="ProductImage" class="control-label">Ürün resmi</label>
+                <input type="file" id="ProductImage" name="ProductImage" accept="image/*,video/*" class="dropify-tr" @(Model != null ? "data-default-file='/WebImage/Images/@Model.ProductImage'" : "" ) />
             </div>
             <div class="form-group">
-                <label asp-for="CreationDate" class="control-label"></label>
-                <input asp-for="CreationDate" class="form-control" />
-                <span asp-validation-for="CreationDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ProductPrice" class="control-label"></label>
+                <label asp-for="ProductPrice" class="control-label">Ürün fiyatı</label>
                 <input asp-for="ProductPrice" class="form-control" />
                 <span asp-validation-for="ProductPrice" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Oluştur" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Listeye geri dön</a>
 </div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="~/js/dropify/js/dropify.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Translated
+            $('.dropify-tr').dropify({
+                messages: {
+                    default: 'Bir dosyayı buraya sürükleyip bırakın veya tıklayın',
+                    replace: 'Bir dosyayı sürükleyip bırakın veya değiştirmek için tıklayın',
+                    remove: 'Kaldır',
+                    error: 'Dosya boyutu çok fazla'
+                }
+            });
+        });
+    </script>
 }

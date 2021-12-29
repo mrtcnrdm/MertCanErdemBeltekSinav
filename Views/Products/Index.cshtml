@@ -4,34 +4,33 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Yeni ürün oluştur</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ProductTitle)
+               ürün başlığı
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ProductName)
+                ürün adı
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ProductDescription)
+                ürün açıklaması
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ProductImage)
+                ürün resmi
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CreationDate)
+                oluşturulma tarihi
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ProductPrice)
+                ürün fiyatı
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Category)
+                kategorisi
             </th>
             <th></th>
         </tr>
@@ -61,9 +60,9 @@
                 @Html.DisplayFor(modelItem => item.Category.Id)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">Güncelle</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detayları gör</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Sil</a>
             </td>
         </tr>
 }

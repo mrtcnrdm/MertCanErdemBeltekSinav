@@ -48,7 +48,7 @@ namespace MertCanErdemBeltekSinav.Controllers
         // GET: Products/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id");
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "CategoryName");
             return View();
         }
 
@@ -61,11 +61,12 @@ namespace MertCanErdemBeltekSinav.Controllers
         {
             if (ModelState.IsValid)
             {
+                products.CreationDate = DateTime.Now;
                 _context.Add(products);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", products.CategoryId);
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "CategoryName", products.CategoryId);
             return View(products);
         }
 
@@ -82,7 +83,7 @@ namespace MertCanErdemBeltekSinav.Controllers
             {
                 return NotFound();
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", products.CategoryId);
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "CategoryName", products.CategoryId);
             return View(products);
         }
 
@@ -118,7 +119,7 @@ namespace MertCanErdemBeltekSinav.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", products.CategoryId);
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "CategoryName", products.CategoryId);
             return View(products);
         }
 
