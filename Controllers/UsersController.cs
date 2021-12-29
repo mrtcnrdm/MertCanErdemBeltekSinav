@@ -48,7 +48,7 @@ namespace MertCanErdemBeltekSinav.Controllers
         // GET: Users/Create
         public IActionResult Create()
         {
-            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Id");
+            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "GenderName");
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace MertCanErdemBeltekSinav.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Id", users.GenderId);
+            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "GenderName", users.GenderId);
             return View(users);
         }
 
@@ -82,7 +82,7 @@ namespace MertCanErdemBeltekSinav.Controllers
             {
                 return NotFound();
             }
-            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Id", users.GenderId);
+            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "GenderName", users.GenderId);
             return View(users);
         }
 
@@ -118,7 +118,7 @@ namespace MertCanErdemBeltekSinav.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Id", users.GenderId);
+            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "GenderName", users.GenderId);
             return View(users);
         }
 

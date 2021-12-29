@@ -1,53 +1,50 @@
 ﻿@model IEnumerable<MertCanErdemBeltekSinav.Models.Users>
 
-@{
-    ViewData["Title"] = "Index";
-}
-
-<h1>Index</h1>
+<h1>Kullanıcılar</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Yeni kullanıcı oluştur</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.FullName)
+                Tam adı
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+                Email adresi
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Password)
+                Şifresi
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Gender)
+                Cinsiyeti
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Password)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gender.Id)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender.GenderName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Güncelle</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Detayı görüntüle</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
